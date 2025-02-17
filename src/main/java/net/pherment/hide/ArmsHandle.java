@@ -17,7 +17,7 @@ public class ArmsHandle {
         ItemMeta meta = seekStick.getItemMeta();
 
         meta.getPersistentDataContainer().set(NamespacedKey.fromString("seek_stick"), PersistentDataType.STRING, "SeekStick");
-        meta.setDisplayName("Палка-Искалка");
+        meta.setDisplayName("Seeker Stick");
 
         seekStick.setItemMeta(meta);
 
