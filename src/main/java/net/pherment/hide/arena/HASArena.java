@@ -60,7 +60,7 @@ public class HASArena {
         onJoinLocation.put(player, player.getLocation());
 
         player.teleport(lobbyLocation);
-        sendArenaMessage(player.getDisplayName() + " зашёл в игру (" + playerOnArena.size() + "/" + maxPlayer + ")");
+        sendArenaMessage(player.getDisplayName() + "Joined The Game (" + playerOnArena.size() + "/" + maxPlayer + ")");
         playArenaSound(Sound.BLOCK_NOTE_BLOCK_PLING);
 
         if (playerOnArena.size() == minPlayer) {
@@ -73,7 +73,7 @@ public class HASArena {
         player.getInventory().clear();
         onJoinLocation.remove(player);
         playerOnArena.remove(player);
-        sendArenaMessage(player.getDisplayName() + " вышел из игры (" + playerOnArena.size() + "/" + maxPlayer + ")");
+        sendArenaMessage(player.getDisplayName() + "left the game (" + playerOnArena.size() + "/" + maxPlayer + ")");
 
     }
 
@@ -87,7 +87,7 @@ public class HASArena {
                   new BukkitRunnable() {
                       @Override
                       public void run() {
-                          sendArenaTitle("Осталось " + finalCtr + " секунд!", "");
+                          sendArenaTitle("Left" + finalCtr + "Seconds!", "");
                       }
                   }.runTask(HideAndSeek.getPlugin(HideAndSeek.class));
                   ctr -= 1;
