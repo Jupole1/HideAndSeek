@@ -19,7 +19,7 @@ public class PlayerCMDs implements CommandExecutor {
                 if (args[0].equals("arena")) {
                     if (args[1].equals("create")) {
                         if (args.length < 4) {
-                            player.sendMessage("Недостаточно аргументов! /hs arena create name minPlayers maxPlayers");
+                            player.sendMessage("Not enough arguments! /hs arena create name minPlayers maxPlayers");
                             return true;
                         }
                         String name = args[2];
@@ -28,12 +28,12 @@ public class PlayerCMDs implements CommandExecutor {
                             minPlayers = Integer.parseInt(args[3]);
                             maxPlayers = Integer.parseInt(args[4]);
                         } catch(Exception e) {
-                            System.out.println("Нельзя преоброзовать в тип Int");
+                            System.out.println("Cannot be converted to type Int");
                             return true;
                         }
 
                         if (HASArena.getArenaByName(name) != null) {
-                            player.sendMessage("Такая арена уже есть!");
+                            player.sendMessage("Such an arena already exists!");
                             return true;
                         }
 
@@ -45,53 +45,53 @@ public class PlayerCMDs implements CommandExecutor {
                         ArenaConfig.getArenaConfig().addDefault("seekersSpawn", 0);
                         ArenaConfig.getArenaConfig().addDefault("hidersSpawn", 0);
                         ArenaConfig.save();
-                        player.sendMessage("Арена создана!");
+                        player.sendMessage("The arena is created!");
                         return true;
 
                     } else if (args[1].equals("setLobby")) {
                         HASArena arena = HASArena.getArenaByName(args[2]);
                         if (arena == null) {
-                            player.sendMessage("Такой арены не существует!");
+                            player.sendMessage("There is no such arena.");
                             return true;
                         }
                         arena.setLobbyLocation(player.getLocation());
                         ArenaConfig.getArenaConfig().set("lobby", player.getLocation());
                         ArenaConfig.save();
-                        player.sendMessage("Лобби установлено!");
+                        player.sendMessage("Lobby installed!");
                         return true;
                     } else if (args[1].equals("setSeekersSpawn")) {
                         HASArena arena = HASArena.getArenaByName(args[2]);
                         if (arena == null) {
-                            player.sendMessage("Такой арены не существует!");
+                            player.sendMessage("such an arena does not exist!");
                             return true;
                         }
                         arena.setSeekersLocation(player.getLocation());
                         ArenaConfig.getArenaConfig().set("seekersSpawn", player.getLocation());
                         ArenaConfig.save();
-                        player.sendMessage("Спавн охотников установлен!");
+                        player.sendMessage("Seeker spawn is set!");
                         return true;
                     } else if (args[1].equals("setHidersSpawn")) {
                         HASArena arena = HASArena.getArenaByName(args[2]);
                         if (arena == null) {
-                            player.sendMessage("Такой арены не существует!");
+                            player.sendMessage("Hider Spawn Set!");
                             return true;
                         }
                         arena.setHidersLocation(player.getLocation());
                         ArenaConfig.getArenaConfig().set("hidersSpawn", player.getLocation());
                         ArenaConfig.save();
-                        player.sendMessage("Спавн жертв установлен!");
+                        player.sendMessage("Hider Spawn Set!");
                         return true;
                     }
                 } else if (args[0].equals("join")) {
                     HASArena arena = HASArena.getArenaByName(args[1]);
                     if (arena == null) {
-                        player.sendMessage("Такой арены не существует!");
+                        player.sendMessage("such an arena does not exist!");
                         return true;
                     }
 
                     HASArena arenaPlayer = HASArena.getArenaOfPlayer(player);
                     if (arenaPlayer != null) {
-                        player.sendMessage("Ты уже в игре!");
+                        player.sendMessage("You are already in the game!");
                         return true;
                     }
 
@@ -100,7 +100,7 @@ public class PlayerCMDs implements CommandExecutor {
                 } else if (args[0].equals("leave")) {
                     HASArena arena = HASArena.getArenaOfPlayer(player);
                     if (arena == null) {
-                        player.sendMessage("Ты сейчас не в игре!");
+                        player.sendMessage("You are not in the game right now.!");
                         return true;
                     }
                     arena.leavePlayer(player);
@@ -110,7 +110,7 @@ public class PlayerCMDs implements CommandExecutor {
             if (args[0].equals("join")) {
                 HASArena arena = HASArena.getArenaByName(args[1]);
                 if (arena == null) {
-                    player.sendMessage("Такой арены не существует!");
+                    player.sendMessage("There is no such arena.");
                     return true;
                 }
                 arena.joinPlayer(player);
@@ -118,7 +118,7 @@ public class PlayerCMDs implements CommandExecutor {
             } else if (args[0].equals("leave")) {
                 HASArena arena = HASArena.getArenaOfPlayer(player);
                 if (arena == null) {
-                    player.sendMessage("Ты сейчас не в игре!");
+                    player.sendMessage("You are not in the game right now!");
                     return true;
                 }
                 arena.leavePlayer(player);
